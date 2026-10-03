@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import Chatbot from '../Chatbot/Chatbot';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -14,6 +15,8 @@ const Layout = ({ children }: LayoutProps) => {
         {children}
       </main>
       <Footer />
+      {/* Global Chatbot rendered on every page */}
+      <Chatbot />
     </div>
   );
 };
