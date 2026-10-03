@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Video, ShieldCheck, Zap } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import ServicesSection from '../components/Home/ServicesSection';
+import CoursesSection from '../components/Home/CoursesSection';
 
 const Home = () => {
   return (
@@ -81,6 +82,12 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Services Section */}
+      <ServicesSection />
+
+      {/* Courses Section */}
+      <CoursesSection />
     </div>
   );
 };
