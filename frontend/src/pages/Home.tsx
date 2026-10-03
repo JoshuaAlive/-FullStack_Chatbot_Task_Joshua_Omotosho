@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <div className="w-full">
       {/* Hero Section */}
-      <section className="relative bg-white overflow-hidden">
+      <section className="relative bg-transparent overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-32">
           <div className="text-center">
             <motion.h1 

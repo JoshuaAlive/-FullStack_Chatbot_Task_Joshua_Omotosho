@@ -5,7 +5,8 @@ html {
 }
 
 body {
-  background-color: #f9fafb; /* gray-50 */
-  color: #111827; /* gray-900 */
+  /* A beautiful soft blue that perfectly matches the blue-600 buttons */
+  background-color: #eff6ff; 
+  color: #0f172a;
   font-family: ui-sans-serif, system-ui, sans-serif;
 }
