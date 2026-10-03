@@ -22,6 +22,7 @@ const Admin = () => {
   const [filterType, setFilterType] = useState<string>('All');
   const [selectedEnquiry, setSelectedEnquiry] = useState<Enquiry | null>(null);
 
+  // 1. GET ALL
   const fetchEnquiries = async () => {
     setLoading(true);
     try {
@@ -37,6 +38,18 @@ const Admin = () => {
     fetchEnquiries();
   }, []);
 
+  // 2. GET BY ID (Used when clicking 'View')
+  const handleView = async (id: string) => {
+    try {
+      const { data } = await axios.get(`http://localhost:5000/api/enquiries/${id}`);
+      setSelectedEnquiry(data);
+    } catch (error) {
+      console.error('Error fetching single enquiry:', error);
+      alert('Failed to fetch full enquiry details.');
+    }
+  };
+
+  // 3. PATCH (Update Status)
   const handleStatusChange = async (id: string, newStatus: string) => {
     try {
       await axios.patch(`http://localhost:5000/api/enquiries/${id}`, { status: newStatus });
@@ -49,6 +62,7 @@ const Admin = () => {
     }
   };
 
+  // 4. DELETE
   const handleDelete = async (id: string) => {
     if (!window.confirm('Are you sure you want to delete this enquiry?')) return;
     try {
@@ -158,7 +172,7 @@ const Admin = () => {
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                      <button onClick={() => setSelectedEnquiry(enq)} className="text-blue-600 hover:text-blue-900 mr-4">View</button>
+                      <button onClick={() => handleView(enq._id)} className="text-blue-600 hover:text-blue-900 mr-4">View</button>
                       <button onClick={() => handleDelete(enq._id)} className="text-red-600 hover:text-red-900"><Trash2 className="w-4 h-4 inline" /></button>
                     </td>
                   </tr>
