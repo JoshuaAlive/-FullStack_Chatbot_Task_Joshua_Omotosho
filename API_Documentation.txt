@@ -1,0 +1,35 @@
+DroneTV AI Support & Lead Assistant - API Documentation
+
+Base URL: http://localhost:5000 (Local Development)
+
+1. Get All Enquiries
+- Method: GET
+- Endpoint: /api/enquiries
+- Purpose: Fetches all submitted leads and student enquiries from the database. Used by the Admin Dashboard to populate the main data table.
+- Response: 200 OK (Array of Enquiry objects)
+
+2. Get Single Enquiry
+- Method: GET
+- Endpoint: /api/enquiries/:id
+- Purpose: Fetches the full details of a specific enquiry using its unique MongoDB ID. Used when an admin clicks "View" on a specific record.
+- Response: 200 OK (Single Enquiry object) or 404 Not Found
+
+3. Create New Enquiry
+- Method: POST
+- Endpoint: /api/enquiries
+- Purpose: Submits a new lead to the database. Used by the intelligent Chatbot when a user fills out the embedded contact form.
+- Required Body: name (string), email (string), phone (string), userType (string), serviceOfInterest (string), message (string)
+- Response: 201 Created (Created Enquiry object) or 400 Bad Request (Validation Error)
+
+4. Update Enquiry Status
+- Method: PATCH
+- Endpoint: /api/enquiries/:id
+- Purpose: Updates the status of an existing enquiry. Used by the Admin Dashboard to move leads between 'New', 'Contacted', 'In Progress', and 'Closed'.
+- Required Body: status (string)
+- Response: 200 OK (Updated Enquiry object) or 404 Not Found
+
+5. Delete Enquiry
+- Method: DELETE
+- Endpoint: /api/enquiries/:id
+- Purpose: Permanently removes an enquiry from the database. Used by the Admin Dashboard trash icon to clean up spam or old leads.
+- Response: 200 OK (Success message) or 404 Not Found
